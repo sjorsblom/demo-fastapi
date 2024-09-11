@@ -13,17 +13,17 @@ jobs:
         id: changes
         with:
           filters: |
-            py:
-              - '**/*.py'
+            python:
+              - added|modified: '*.py'
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r ${{ github.workspace }}/requirements.txt
-      # - name: Analysing the code with pylint
-      #   if: steps.changes.outputs.py == 'true'
-      #   run: |
-      #     pylint ${{ steps.changes.outputs.py_files }} --rcfile ${{ github.workspace }}/.pylintrc
-      - name: Analysing the code with black
-        if: steps.changes.outputs.py == 'true'
+      - name: Analysing the code with pylint
+        if: steps.changes.outputs.python == 'true'
         run: |
-          black ${{ steps.changes.outputs.py_files }} --diff --color
+          pylint ${{ steps.changes.outputs.python_files }} --rcfile ${{ github.workspace }}/.pylintrc
+      - name: Analysing the code with black
+        if: steps.changes.outputs.python == 'true'
+        run: |
+          black ${{ steps.changes.outputs.python_files }} --diff --color
