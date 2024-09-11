@@ -22,8 +22,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ${{ github.workspace }}/requirements.txt
       - name: Analysing the code with pylint
+        if: steps.changes.outputs.py == 'true'
         run: |
-          pylint --reports=n --output-format=json --rcfile .pylintrc $(git ls-files '*.py')
+          pylint --reports=n --output-format=json --rcfile .pylintrc $(git ls-files '*.py') --files ${{ steps.changes.outputs.py_files }}
       - name: Analysing the code with black
+        if: steps.changes.outputs.py == 'true'
         run: |
           black --files ${{ steps.changes.outputs.py_files }}
