@@ -18,3 +18,6 @@ jobs:
       - name: Analysing the code with pylint
         run: |
           pylint --reports=n --output-format=json --rcfile .pylintrc $(git ls-files '*.py')
+      - name: Analysing the code with black
+        run: |
+          black
