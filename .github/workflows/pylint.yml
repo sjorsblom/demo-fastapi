@@ -3,7 +3,7 @@ name: Pylint
 on: [push]
 
 jobs:
-  build:
+  linting:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -11,6 +11,12 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: 3.11.1
+      - uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            py:
+              - '**/*.py'
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -20,4 +26,4 @@ jobs:
           pylint --reports=n --output-format=json --rcfile .pylintrc $(git ls-files '*.py')
       - name: Analysing the code with black
         run: |
-          black
+          black --files ${{ linting.changes.outputs.py }}
