@@ -5,7 +5,6 @@ on: [push]
 jobs:
   linting:
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - name: Setup Python
@@ -22,22 +21,22 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ${{ github.workspace }}/requirements.txt
       - name: Analysing the code with flake8
-        if: steps.changes.outputs.python == 'true'
+        if: steps.changes.outputs.python == 'true' && always()
         run: |
           flake8 ${{ steps.changes.outputs.python_files }} --config ${{ github.workspace }}/.flake8
       - name: Analysing the code with black
-        if: steps.changes.outputs.python == 'true'
+        if: steps.changes.outputs.python == 'true' && always()
         run: |
           black ${{ steps.changes.outputs.python_files }}
       - name: Analysing imports with isort and black
-        if: steps.changes.outputs.python == 'true'
+        if: steps.changes.outputs.python == 'true' && always()
         run: |
           isort ${{ steps.changes.outputs.python_files }} --profile black
       - name: Analysing the code with mypy
-        if: steps.changes.outputs.python == 'true'
+        if: steps.changes.outputs.python == 'true' && always()
         run: |
           mypy ${{ steps.changes.outputs.python_files }} --pretty
       - name: Analysing the code with bandit
-        if: steps.changes.outputs.python == 'true'
+        if: steps.changes.outputs.python == 'true' && always()
         run: |
           bandit ${{ steps.changes.outputs.python_files }}
