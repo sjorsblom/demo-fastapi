@@ -5,6 +5,7 @@ on: [push]
 jobs:
   linting:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - name: Setup Python
@@ -21,12 +22,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ${{ github.workspace }}/requirements.txt
       - name: Analysing the code with pylint
-        continue-on-error: true
         if: steps.changes.outputs.python == 'true'
         run: |
           pylint ${{ steps.changes.outputs.python_files }} --rcfile ${{ github.workspace }}/.pylintrc
       - name: Analysing the code with black
-        continue-on-error: true
         if: steps.changes.outputs.python == 'true'
         run: |
           black ${{ steps.changes.outputs.python_files }} --diff --color
