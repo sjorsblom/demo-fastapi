@@ -26,4 +26,5 @@ async def read_user(user_id: str):
 @app.get("/users/other/{user_id}")
 async def read_another_user(user_id: str):
     hi = 2
+    hi = 3
     return {"user_id": user_id}
