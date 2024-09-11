@@ -20,7 +20,6 @@ async def read_user_me():
 
 @app.get("/users/{user_id}")
 async def read_user(user_id: str):
-    hi = 2
     return {"user_id": user_id}
 
 
