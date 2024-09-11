@@ -1,4 +1,4 @@
-name: Pylint
+name: Code Quality
 
 on: [push]
 
@@ -21,10 +21,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r ${{ github.workspace }}/requirements.txt
-      - name: Analysing the code with pylint
+      - name: Analysing the code with flake8
         if: steps.changes.outputs.python == 'true'
         run: |
-          pylint ${{ steps.changes.outputs.python_files }} --rcfile ${{ github.workspace }}/.pylintrc
+          flake8 ${{ steps.changes.outputs.python_files }} --config ${{ github.workspace }}/.flake8
       - name: Analysing the code with black
         if: steps.changes.outputs.python == 'true'
         run: |
@@ -37,3 +37,7 @@ jobs:
         if: steps.changes.outputs.python == 'true'
         run: |
           mypy ${{ steps.changes.outputs.python_files }} --pretty
+      - name: Analysing the code with bandit
+        if: steps.changes.outputs.python == 'true'
+        run: |
+          bandit ${{ steps.changes.outputs.python_files }}
