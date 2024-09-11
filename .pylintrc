@@ -2,5 +2,3 @@
 
 disable=missing-function-docstring,
         missing-module-docstring
-        
-enable=print-statement
