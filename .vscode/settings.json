@@ -1,0 +1,12 @@
+{
+  "editor.detectIndentation": false,
+  "editor.tabSize": 4,
+  "editor.formatOnSave": true,
+  "cSpell.words": [
+    "fastapi"
+],
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+  },
+  "pylint.args": ["--rcfile",".pylintrc"]
+}
