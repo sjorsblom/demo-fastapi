@@ -17,6 +17,11 @@ async def read_user(user_id: str):
     return {"user_id": user_id}
 
 
+@app.get("/idk/{user_id}")
+async def idk(user_id: str):
+    return {"idk": user_id}
+
+
 @app.get("/users/other/{user_id}")
 async def read_another_user(user_id: str):
     return {"user_id": user_id}
