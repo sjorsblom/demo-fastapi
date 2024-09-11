@@ -15,8 +15,6 @@ async def read_item(item_id: int):
 
 @app.get("/users/me")
 async def read_user_me():
-    hi = 2
-
     return {"user_id": "the current user"}
 
 
