@@ -17,6 +17,11 @@ async def read_user(user_id: str):
     return {"user_id": user_id}
 
 
+@app.get("/idk/{user_id}")
+async def idk(user_id: str):
+    return {"idk": user_id}
+
+
 @app.get("/users/other/{user_id}")
 async def read_another_user(user_id: str):
     return {"user_id": user_id}
@@ -24,7 +29,8 @@ async def read_another_user(user_id: str):
 
 @app.get("/files/{file_path:path}")
 async def read_file(file_path: str):
-    """The path parameter type will help you match any path, including /, /path/to/file.txt, etc."""
+    """The path parameter type will help you match any path, including /,
+    /path/to/file.txt, etc."""
     return {"file_path": file_path}
 
 

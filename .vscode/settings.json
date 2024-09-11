@@ -9,6 +9,10 @@
       "source.organizeImports": "explicit"
     }
   },
+  "flake8.importStrategy": "fromEnvironment",
+  "black-formatter.importStrategy": "fromEnvironment",
+  "bandit.importStrategy": "fromEnvironment",
+  "mypy-type-checker.importStrategy": "fromEnvironment",
   "isort.args": ["--profile", "black"],
-  "pylint.args": ["--rcfile", ".pylintrc"]
+  "flake8.args": ["--config=.flake8"]
 }
