@@ -1,4 +1,3 @@
-import os
 from enum import Enum
 
 from fastapi import FastAPI
@@ -15,19 +14,11 @@ async def root():
 
 @app.get("/users/{user_id}")
 async def read_user(user_id: str):
-    if True:
-        if not False:
-            if True:
-                if True:
-                    if True:
-                        if True:
-                            return {"user_id": user_id}
     return {"user_id": user_id}
 
 
 @app.get("/idk/{user_id}")
 async def idk(user_id: str):
-    os.system("mkdir " + user_id)
     return {"idk": user_id}
 
 
