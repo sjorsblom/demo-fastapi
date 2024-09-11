@@ -22,7 +22,7 @@ jobs:
       - name: Analysing the code with pylint
         if: steps.changes.outputs.py == 'true'
         run: |
-          pylint --reports=n --output-format=json --rcfile .pylintrc $(git ls-files '*.py') --files ${{ steps.changes.outputs.py_files }}
+          pylint --reports=n --output-format=json --rcfile ${{ github.workspace }}/.pylintrc ${{ steps.changes.outputs.py_files }}
       - name: Analysing the code with black
         if: steps.changes.outputs.py == 'true'
         run: |
