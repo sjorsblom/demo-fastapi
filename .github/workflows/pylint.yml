@@ -26,4 +26,4 @@ jobs:
           pylint --reports=n --output-format=json --rcfile .pylintrc $(git ls-files '*.py')
       - name: Analysing the code with black
         run: |
-          black --files ${{ linting.changes.outputs.py }}
+          black --files ${{ steps.changes.outputs.py }}
