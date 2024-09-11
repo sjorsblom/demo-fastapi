@@ -28,4 +28,12 @@ jobs:
       - name: Analysing the code with black
         if: steps.changes.outputs.python == 'true'
         run: |
-          black ${{ steps.changes.outputs.python_files }} --diff --color
+          black ${{ steps.changes.outputs.python_files }}
+      - name: Analysing imports with isort and black
+        if: steps.changes.outputs.python == 'true'
+        run: |
+          isort ${{ steps.changes.outputs.python_files }} --profile black
+      - name: Analysing the code with mypy
+        if: steps.changes.outputs.python == 'true'
+        run: |
+          mypy ${{ steps.changes.outputs.python_files }} --pretty
