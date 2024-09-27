@@ -2,7 +2,7 @@
   "editor.detectIndentation": false,
   "editor.tabSize": 4,
   "editor.formatOnSave": true,
-  "cSpell.words": ["fastapi", "Pydantic"],
+  "cSpell.words": ["fastapi", "jsonable", "Pydantic"],
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.codeActionsOnSave": {
