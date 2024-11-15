@@ -22,6 +22,7 @@ markdown-it-py==3.0.0
 MarkupSafe==2.1.5
 mccabe==0.7.0
 mdurl==0.1.2
+motor==3.6.0
 mypy==1.11.2
 mypy-extensions==1.0.0
 packaging==24.1
@@ -33,6 +34,7 @@ pydantic==2.9.1
 pydantic_core==2.23.3
 pyflakes==3.2.0
 Pygments==2.18.0
+pymongo==4.9.2
 python-dotenv==1.0.1
 python-multipart==0.0.9
 PyYAML==6.0.2
